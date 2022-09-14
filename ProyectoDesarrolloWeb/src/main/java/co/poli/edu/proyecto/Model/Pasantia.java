@@ -19,13 +19,14 @@ public class Pasantia {
 	private String Hora;
 	private String id_estudiante;
 	private String nombre_estudiante;
+	private String semestre;
 	
 	@ManyToOne
 	@JoinColumn(name = "programa_id")
 	private Programa programa;
 	
 	public Pasantia(int id_pasantia, String lugar, String fecha, String hora, String id_estudiante,
-			String nombre_estudiante) {
+			String nombre_estudiante, String semestre) {
 		super();
 		this.id_pasantia = id_pasantia;
 		this.lugar = lugar;
@@ -33,6 +34,7 @@ public class Pasantia {
 		Hora = hora;
 		this.id_estudiante = id_estudiante;
 		this.nombre_estudiante = nombre_estudiante;
+		this.semestre = semestre;
 	}
 	
 	public Pasantia() {
@@ -93,5 +95,14 @@ public class Pasantia {
 	public void setPrograma(Programa programa) {
 		this.programa = programa;
 	}
+
+	public String getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
+	
 
 }
