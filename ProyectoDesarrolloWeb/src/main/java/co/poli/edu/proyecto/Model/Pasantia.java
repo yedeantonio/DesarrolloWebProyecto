@@ -40,6 +40,7 @@ public class Pasantia {
 	public Pasantia() {
 		
 	}
+	
 	public int getId_pasantia() {
 		return id_pasantia;
 	}
