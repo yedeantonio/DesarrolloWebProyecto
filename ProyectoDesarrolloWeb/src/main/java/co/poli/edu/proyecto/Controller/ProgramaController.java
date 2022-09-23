@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.poli.edu.proyecto.Repository.ProgramaRepository;
-import co.edu.poli.act2.model.Book;
 import co.poli.edu.proyecto.Model.Programa;
 
 @RestController
