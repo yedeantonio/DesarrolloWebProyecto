@@ -14,6 +14,7 @@ public class Pasantia {
 	
 	@Id	
 	private int id_pasantia;
+	
 	private String lugar;
 	private String Fecha;
 	private String Hora;
@@ -25,22 +26,24 @@ public class Pasantia {
 	@JoinColumn(name = "programa_id")
 	private Programa programa;
 	
+	public Pasantia() {
+		
+	}
+	
+	
 	public Pasantia(int id_pasantia, String lugar, String fecha, String hora, String id_estudiante,
 			String nombre_estudiante, String semestre) {
 		super();
 		this.id_pasantia = id_pasantia;
 		this.lugar = lugar;
-		Fecha = fecha;
-		Hora = hora;
+		this.Fecha = fecha;
+		this.Hora = hora;
 		this.id_estudiante = id_estudiante;
 		this.nombre_estudiante = nombre_estudiante;
 		this.semestre = semestre;
 	}
 	
-	public Pasantia() {
-		
-	}
-	
+
 	public int getId_pasantia() {
 		return id_pasantia;
 	}

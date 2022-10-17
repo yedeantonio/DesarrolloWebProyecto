@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import co.edu.poli.act2.model.Book;
 import co.poli.edu.proyecto.Model.Pasantia;
 import co.poli.edu.proyecto.Model.Programa;
 import co.poli.edu.proyecto.Repository.PasantiaRepository;
@@ -53,7 +51,7 @@ public class PasantiaController {
 	@PutMapping("/pasantia/{id_pasantia}")
 	public Pasantia actualizarPasantia(@PathVariable Integer id_pasantia, @RequestBody Pasantia pasantia) {
 
-		Pasantia a = getPasantia(id_pasantia);
+		Pasantia a = visualizarPasantia(id_pasantia);
 
 		a.setLugar(pasantia.getLugar());
 		a.setFecha(pasantia.getFecha());
@@ -66,11 +64,26 @@ public class PasantiaController {
 		return a;
 	}
 	
+	
 	@DeleteMapping("/pasantia/{id_pasantia}")
 	public Pasantia eliminarPasantia(@PathVariable Integer id_pasantia) {
-		Pasantia a = get(id_pasantia);
+		Pasantia a = visualizarPasantia(id_pasantia);
 		pasantiaRepository.deleteById(id_pasantia);
 		return a;
+	}
+	
+	@PutMapping("/pasantia/{idC}/{idI}")
+	public Pasantia associate(@PathVariable int idC, @PathVariable String idI) {
+		
+		Pasantia pasantia = pasantiaRepository.findById(idC).get();
+		Programa programa = programaRepository.findById(idI).get();
+		
+
+		programa.getPasantias().add(pasantia);
+		pasantia.setPrograma(programa);
+		
+		pasantiaRepository.save(pasantia);
+		return pasantia;
 	}
 
 }
